@@ -11,7 +11,6 @@ use Console\Model\Response\Result\Result;
 use Console\Model\Response\Result\Stunned;
 use Console\Round\Round;
 use PHPUnit\Framework\TestCase;
-use Tylercd100\Placeholders\Placeholders;
 
 class RoundTest extends TestCase
 {
@@ -20,6 +19,11 @@ class RoundTest extends TestCase
      */
     public function testConstruction(): void
     {
+        $factory = $this->mockFactory();
+
+        $sut = new Round($factory);
+
+        $this->assertInstanceOf(Round::class, $sut);
     }
 
     /**

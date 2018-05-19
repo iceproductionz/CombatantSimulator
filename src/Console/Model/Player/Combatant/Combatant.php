@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Console\Model\Player\Combatant;
 
 use Console\Model\Value\Defence;
@@ -40,8 +42,25 @@ interface Combatant
 
     /**
      * Get Luck
-     *b
+     *
      * @return Luck
      */
     public function getLuck() : Luck;
+
+    /**
+     * Is Combatant Lucky
+     *
+     * @return bool
+     */
+    public function isLucky(): bool;
+
+    /**
+     * @return bool
+     */
+    public function hasAttackDoubled(): bool ;
+
+    /**
+     * @return bool
+     */
+    public function hasStunned(): bool;
 }
