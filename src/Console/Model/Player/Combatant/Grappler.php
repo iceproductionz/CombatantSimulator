@@ -1,6 +1,6 @@
 <?php
 
-namespace Console\Model\Combatant;
+namespace Console\Model\Player\Combatant;
 
 use Console\Model\Value\Defence;
 use Console\Model\Value\Health;

@@ -1,0 +1,7 @@
+{
+  "results": {
+    "stunned" : ":attackerName is stunned, missed current round",
+    "evaded"  : "The defender :defenderName evaded attack by :attackerName:",
+    "attack"  : ":attackerName delivered :damage damage to :defenderName. "
+  }
+}
