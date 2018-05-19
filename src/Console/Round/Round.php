@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Console\Round;
 
 use Console\Model\Player\Player;
 use Console\Model\Response\Result\Factory\Factory as ResultFactory;
 use Console\Model\Response\Result\Result;
-use Console\Model\Response\Result\Stunned;
 
 class Round
 {
@@ -40,15 +41,6 @@ class Round
             return $this->resultFactory->make('stunned', $attacker, $defender, $damage);
         }
 
-        if ($defender->hasEvaded()) {
-            $damage = 10;
-
-            $defender->setEvaded(false);
-            $attacker->getFirstCombatant()->getHealth()->apply($damage);
-
-            return $this->resultFactory->make('evaded', $attacker, $defender, $damage);
-        }
-
         if ($attacker->hasAttackDoubled()) {
             $damage = ($attacker->getFirstCombatant()->getStrength()->getValue() * 2) - $defender->getFirstCombatant()->getDefence()->getValue();
             $defender->getFirstCombatant()->getHealth()->apply($damage);
@@ -57,6 +49,11 @@ class Round
         }
 
         if ($defender->isLucky()) {
+            if ($defender->canCounterAttack()) {
+                $attacker->getFirstCombatant()->getHealth()->apply(10);
+                return $this->resultFactory->make('evaded', $attacker, $defender, $damage);
+            }
+
             return $this->resultFactory->make('miss', $attacker, $defender, $damage);
         }
 

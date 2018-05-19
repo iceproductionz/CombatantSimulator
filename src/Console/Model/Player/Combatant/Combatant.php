@@ -63,4 +63,9 @@ interface Combatant
      * @return bool
      */
     public function hasStunned(): bool;
+
+    /**
+     * @return bool
+     */
+    public function canCounterAttack(): bool;
 }

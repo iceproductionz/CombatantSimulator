@@ -57,8 +57,8 @@ class RoundTest extends TestCase
         $attacker =  $this->mockPlayer();
 
         $defender =  $this->mockPlayer();
-        $defender->method('hasEvaded')->willReturn(true);
-        $defender->expects($this->once())->method('setEvaded');
+        $defender->method('isLucky')->willReturn(true);
+        $defender->method('canCounterAttack')->willReturn(true);
 
         $sut = new Round($factory);
 

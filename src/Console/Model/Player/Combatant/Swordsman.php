@@ -148,4 +148,14 @@ class Swordsman implements Combatant
     {
         return false;
     }
+
+    /**
+     * Can evade
+     *
+     * @return bool
+     */
+    public function canCounterAttack(): bool
+    {
+        return true;
+    }
 }

@@ -14,11 +14,6 @@ class Player
     private $combatants;
 
     /**
-     * @var bool
-     */
-    private $evaded;
-
-    /**
      * @var Text
      */
     private $name;
@@ -33,13 +28,11 @@ class Player
      *
      * @param Text $name
      * @param bool $stunned
-     * @param bool $evaded
      * @param Collection $combatants
      */
-    public function __construct(Text $name, bool $stunned, bool $evaded, Collection $combatants)
+    public function __construct(Text $name, bool $stunned, Collection $combatants)
     {
         $this->combatants = $combatants;
-        $this->evaded     = $evaded;
         $this->name       = $name;
         $this->stunned    = $stunned;
     }
@@ -84,20 +77,9 @@ class Player
         $this->stunned = $stunned;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasEvaded(): bool
+    public function canCounterAttack(): bool
     {
-        return $this->evaded;
-    }
-
-    /**
-     * @param bool $evaded
-     */
-    public function setEvaded(bool $evaded): void
-    {
-        $this->evaded = $evaded;
+        return $this->combatants->getFirstCombatant()->canCounterAttack();
     }
 
     /**

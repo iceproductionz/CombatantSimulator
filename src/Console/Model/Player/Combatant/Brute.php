@@ -68,7 +68,7 @@ class Brute implements Combatant
     }
 
     /**
-     * Get Health
+     * Get health
      *
      * @return Health
      */
@@ -78,7 +78,7 @@ class Brute implements Combatant
     }
 
     /**
-     * Get Strength
+     * Get strength
      *
      * @return Strength
      */
@@ -88,7 +88,7 @@ class Brute implements Combatant
     }
 
     /**
-     * Get Defence
+     * Get defence
      *
      * @return Defence
      */
@@ -98,7 +98,7 @@ class Brute implements Combatant
     }
 
     /**
-     * Get Speed
+     * Get speed
      *
      * @return Speed
      */
@@ -108,7 +108,7 @@ class Brute implements Combatant
     }
 
     /**
-     * Get Luck
+     * Get luck
      *
      * @return Luck
      */
@@ -118,7 +118,7 @@ class Brute implements Combatant
     }
 
     /**
-     * Is Combatant Lucky
+     * Is combatant lucky
      *
      * @return bool
      */
@@ -130,6 +130,8 @@ class Brute implements Combatant
     }
 
     /**
+     * Has attack doubled
+     *
      * @return bool
      */
     public function hasAttackDoubled(): bool
@@ -137,10 +139,25 @@ class Brute implements Combatant
         return false;
     }
 
+    /**
+     * Has stunned defender
+     *
+     * @return bool
+     */
     public function hasStunned(): bool
     {
         $chance = $this->chance;
 
         return $chance(0.02);
+    }
+
+    /**
+     * Can evade
+     *
+     * @return bool
+     */
+    public function canCounterAttack(): bool
+    {
+        return false;
     }
 }
