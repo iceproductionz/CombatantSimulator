@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Console\Model\Response\Result\Factory;
 
-use Console\Exception\InvalidRegex;
 use Console\Exception\NotImplemented;
 use Console\Model\Player\Player;
-use Console\Model\Response\Result\Attack;
+use Console\Model\Response\Result\Hit;
 use Console\Model\Response\Result\Evaded;
+use Console\Model\Response\Result\Miss;
 use Console\Model\Response\Result\Result;
 use Console\Model\Response\Result\Stunned;
 use Console\Model\Value\Text;
+use StringTemplate\Engine;
 
 class Factory
 {
@@ -21,13 +22,20 @@ class Factory
     private $result;
 
     /**
+     * @var Engine
+     */
+    private $template;
+
+    /**
      * Factory constructor.
      *
+     * @param Engine $template
      * @param array $result
      */
-    public function __construct(array $result)
+    public function __construct(Engine $template, array $result)
     {
         $this->result = $result;
+        $this->template = $template;
     }
 
     /**
@@ -36,20 +44,29 @@ class Factory
      * @param string $code
      * @param Player $attacker
      * @param Player $defender
+     * @param int $damage
      * @return Result
      */
-    public function make(string $code, Player $attacker, Player $defender) : Result
+    public function make(string $code, Player $attacker, Player $defender, int $damage) : Result
     {
-        $text = '';
-        if (isset($this->result[$code])) {
-            $text = $this->race(
-                $this->result[$code],
-                [
-                    'attackerName' => $attacker->getName()->getValue(),
-                    'defenderName' => $defender->getName()->getValue()
-                ]
-            );
+        if (!isset($this->result[$code])) {
+            throw new NotImplemented('$code, supplied not implemented: '. $code);
         }
+        $text = $this->parse(
+            $this->result[$code],
+            [
+                'attacker' => [
+                    'name'   => $attacker->getName()->getValue(),
+                    'health' => $attacker->getFirstCombatant()->getHealth()->getValue(),
+                    'damage' => $damage,
+                ],
+                'defender' => [
+                    'name'   => $defender->getName()->getValue(),
+                    'health' => $defender->getFirstCombatant()->getHealth()->getValue(),
+                    'damage' => $damage,
+                ]
+            ]
+        );
         $message = new Text($text);
 
         switch ($code) {
@@ -57,47 +74,24 @@ class Factory
                 return new Evaded($message);
             case 'stunned':
                 return new Stunned($message);
-            case 'attack':
-                return new Attack($message);
+            case 'miss':
+                return new Miss($message);
+            case 'hit':
+                return new Hit($message);
             default:
                 throw new NotImplemented('Result is not implemented');
-
         }
-
     }
 
     /**
      * TODO more this to a proxy class
      *
-     * @param $text
-     * @param array $replacer
+     * @param string  $text
+     * @param array   $replacements
      * @return string
      */
-    private function race($text, array $replacer): string
+    private function parse(string $text, array $replacements): string
     {
-        foreach ($replacer as $key => $value) {
-            $text = $this->findReplace($text, $key, $value);
-        }
-        return $text;
-    }
-
-    /**
-     * Parses a template argument to the specified value
-     * Template variables are defined using double curly brackets: {{ [a-zA-Z] }}
-     * Returns the query back once the instances has been replaced
-     *
-     * @param string $string
-     * @param string $find
-     * @param string $replace
-     * @return string
-     * @throws InvalidRegex
-     */
-    private function findReplace($string, $find, $replace): string
-    {
-        if (preg_match("/[a-zA-Z\_]+/", $find)) {
-            return (string) preg_replace("/\{\{(\s+)?($find)(\s+)?\}\}/", $replace, $string);
-        }
-
-        throw new InvalidRegex('Find statement must match regex pattern: /[a-zA-Z]+/');
+        return $this->template->render($text, $replacements);
     }
 }

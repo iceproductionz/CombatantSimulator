@@ -27,6 +27,14 @@ class Player
      * @var bool
      */
     private $stunned;
+    /**
+     * @var bool
+     */
+    private $attackDoubled;
+    /**
+     * @var bool
+     */
+    private $lucky;
 
     /**
      * Player constructor.
@@ -34,14 +42,18 @@ class Player
      * @param Text $name
      * @param bool $stunned
      * @param bool $evaded
+     * @param bool $attackDoubled
+     * @param bool $lucky
      * @param Collection $combatants
      */
-    public function __construct(Text $name, bool $stunned, bool $evaded, Collection $combatants)
+    public function __construct(Text $name, bool $stunned, bool $evaded, bool $attackDoubled, bool $lucky, Collection $combatants)
     {
+        $this->attackDoubled = $attackDoubled;
         $this->combatants = $combatants;
         $this->evaded     = $evaded;
         $this->name       = $name;
         $this->stunned    = $stunned;
+        $this->lucky      = $lucky;
     }
 
     /**
@@ -98,5 +110,21 @@ class Player
     public function setEvaded(bool $evaded): void
     {
         $this->evaded = $evaded;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasAttackDoubled(): bool
+    {
+        return $this->attackDoubled;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLucky(): bool
+    {
+        return $this->lucky;
     }
 }

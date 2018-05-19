@@ -7,11 +7,11 @@ namespace Console\Model\Response\Result;
 use Console\Model\Value\Text;
 
 /**
- * Class Attack
+ * Class Miss
  *
  * @package Console\Model\Response\Result
  */
-class Attack implements Result
+class Miss implements Result
 {
     /**
      * @var Text
@@ -19,7 +19,7 @@ class Attack implements Result
     private $text;
 
     /**
-     * Attack constructor.
+     * Miss constructor.
      *
      * @param Text $text
      */
