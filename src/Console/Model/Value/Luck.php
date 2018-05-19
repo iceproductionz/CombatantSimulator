@@ -7,7 +7,7 @@ namespace Console\Model\Value;
  *
  * @package Console\Model\Value
  */
-class Luck
+class Luck implements Value
 {
     /**
      * @var int

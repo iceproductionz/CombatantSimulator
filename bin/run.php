@@ -7,8 +7,10 @@ if (!$loader = include __DIR__ . '/../vendor/autoload.php') {
 
 $app = new \Console\Application('Combatant Console');
 
+$app->register(new \Console\Provider\LangProvider());
+$app->register(new \Console\Provider\CombatantProvider());
+
 $app->command(new \Console\Command\Simulator());
 
-$app->register(new \Console\Provider\LangProvider());
 
 $app->run();

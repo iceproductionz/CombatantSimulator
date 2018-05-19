@@ -8,6 +8,11 @@ use Console\Model\Player\Player;
 use Console\Model\Response\Result\Factory\Factory as ResultFactory;
 use Console\Model\Response\Result\Result;
 
+/**
+ * Class Round
+ *
+ * @package Console\Round
+ */
 class Round
 {
     /**
@@ -26,7 +31,7 @@ class Round
     }
 
     /**
-     *
+     * Play single round actions
      *
      * @param Player $attacker
      * @param Player $defender
@@ -45,7 +50,7 @@ class Round
             $damage = ($attacker->getFirstCombatant()->getStrength()->getValue() * 2) - $defender->getFirstCombatant()->getDefence()->getValue();
             $defender->getFirstCombatant()->getHealth()->apply($damage);
 
-            return $this->resultFactory->make('attack', $attacker, $defender, $damage);
+            return $this->resultFactory->make('hit', $attacker, $defender, $damage);
         }
 
         if ($defender->isLucky()) {

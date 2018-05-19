@@ -13,7 +13,7 @@ interface Combatant
     public function getConditions() : array;
 
     /**
-     * @return \Console\Model\Combatant\Combatant
+     * @return \Console\Model\Player\Combatant\Combatant
      */
     public function make();
 }

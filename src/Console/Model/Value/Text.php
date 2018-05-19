@@ -2,7 +2,6 @@
 
 namespace Console\Model\Value;
 
-
 class Text implements Value
 {
 

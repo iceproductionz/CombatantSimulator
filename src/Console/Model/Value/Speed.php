@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ice
- * Date: 19/05/2018
- * Time: 00:07
- */
 
 namespace Console\Model\Value;
 
@@ -13,7 +7,7 @@ namespace Console\Model\Value;
  *
  * @package Console\Model\Value
  */
-class Speed
+class Speed implements Value
 {
     /**
      * @var int

@@ -3,6 +3,8 @@
 namespace Console\Factory\Combatant;
 
 use Console\Factory\Value;
+use Console\Model\Chance\Chance;
+use Console\Model\Player\Combatant\Grappler as Model;
 use Console\Model\Value\Defence;
 use Console\Model\Value\Health;
 use Console\Model\Value\Luck;
@@ -15,15 +17,21 @@ class Grappler implements Combatant
      * @var Value
      */
     private $factoryValue;
+    /**
+     * @var Chance
+     */
+    private $chance;
 
     /**
      * Grappler constructor.
      *
+     * @param Chance $chance
      * @param Value $factoryValue
      */
-    public function __construct(Value $factoryValue)
+    public function __construct(Chance $chance, Value $factoryValue)
     {
         $this->factoryValue = $factoryValue;
+        $this->chance = $chance;
     }
 
     /**
@@ -41,7 +49,7 @@ class Grappler implements Combatant
     }
 
     /**
-     * @return \Console\Model\Combatant\Combatant
+     * @return Model
      */
     public function make()
     {
@@ -52,6 +60,6 @@ class Grappler implements Combatant
         $speed      = $conditions['speed'];
         $luck       = $conditions['luck'];
 
-        return new \Console\Model\Combatant\Grappler($health, $strength, $defence, $speed, $luck);
+        return new Model($this->chance, $health, $strength, $defence, $speed, $luck);
     }
 }

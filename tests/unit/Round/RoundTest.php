@@ -89,6 +89,26 @@ class RoundTest extends TestCase
     }
 
     /**
+     * Test when an attack doubled hits  the defender
+     */
+    public function testHitDoubled(): void
+    {
+        $factory = $this->mockFactory();
+
+        $attacker =  $this->mockPlayer();
+        $attacker->method('hasAttackDoubled')->willReturn(true);
+
+        $defender =  $this->mockPlayer();
+
+        $sut = new Round($factory);
+
+        $result = $sut($attacker, $defender);
+
+        $this->assertInstanceOf(Result::class, $result);
+        $this->assertInstanceOf(Hit::class, $result);
+    }
+
+    /**
      * Test when an attack hits  the defender
      */
     public function testHit(): void

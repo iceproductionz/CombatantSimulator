@@ -7,7 +7,7 @@ namespace Console\Model\Value;
  *
  * @package Console\Model\Value
  */
-class Strength
+class Strength implements Value
 {
     /**
      * @var int

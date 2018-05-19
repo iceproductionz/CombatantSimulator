@@ -3,6 +3,8 @@
 namespace Console\Factory\Combatant;
 
 use Console\Factory\Value;
+use Console\Model\Chance\Chance;
+use Console\Model\Player\Combatant\Swordsman as Model;
 use Console\Model\Value\Defence;
 use Console\Model\Value\Health;
 use Console\Model\Value\Luck;
@@ -20,15 +22,20 @@ class Swordsman implements Combatant
      * @var Value
      */
     private $factoryValue;
+    /**
+     * @var Chance
+     */
+    private $chance;
 
     /**
      * Swordsman constructor.
      *
      * @param Value $factoryValue
      */
-    public function __construct(Value $factoryValue)
+    public function __construct(Chance $chance, Value $factoryValue)
     {
         $this->factoryValue = $factoryValue;
+        $this->chance = $chance;
     }
 
     /**
@@ -46,7 +53,7 @@ class Swordsman implements Combatant
     }
 
     /**
-     * @return \Console\Model\Combatant\Combatant
+     * @return Model
      */
     public function make()
     {
@@ -57,6 +64,6 @@ class Swordsman implements Combatant
         $speed      = $conditions['speed'];
         $luck       = $conditions['luck'];
 
-        return new \Console\Model\Combatant\Swordsman($health, $strength, $defence, $speed, $luck);
+        return new Model($this->chance, $health, $strength, $defence, $speed, $luck);
     }
 }
