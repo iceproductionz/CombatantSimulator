@@ -28,13 +28,7 @@ class Value
         }
         $initialValue = random_int($min, $max);
 
-        switch ($className) {
-            case Luck::class:
-                $initialValue /= 100;
-                return new $className ($initialValue);
-            default:
-                return new $className ($initialValue);
-        }
+        return new $className ($initialValue);
     }
 
 

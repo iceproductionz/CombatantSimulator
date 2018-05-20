@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Console\Model\Response\Result;
 
-use Console\Model\Player\Player;
-use Console\Model\Value\Factory\Factory;
 use Console\Model\Value\Text;
 
 /**
@@ -30,8 +28,19 @@ class Stunned implements Result
         $this->text = $text;
     }
 
+    /**
+     * @return Text
+     */
     public function getMessage(): Text
     {
         return $this->text;
+    }
+
+    /**
+     * @return bool
+     */
+    public function endGame(): bool
+    {
+        return false;
     }
 }

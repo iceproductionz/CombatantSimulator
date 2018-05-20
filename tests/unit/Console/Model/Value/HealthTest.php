@@ -1,6 +1,6 @@
 <?php
 
-namespace CombatantSimulator\Test\Unit\Model\Value;
+namespace CombatantSimulator\Test\Unit\Console\Model\Value;
 
 use Console\Exception\InvalidValue;
 use Console\Model\Value\Health;
@@ -13,7 +13,7 @@ class HealthTest extends TestCase
     /**
      * @return array
      */
-    public function provideConstructionValues()
+    public function provideConstructionValues(): array
     {
         return [
             [

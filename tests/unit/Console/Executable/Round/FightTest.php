@@ -1,6 +1,6 @@
 <?php
 
-namespace CombatantSimulator\Test\Unit\Round;
+namespace CombatantSimulator\Test\Unit\Console\Executable\Round;
 
 use Console\Model\Player\Player;
 use Console\Model\Response\Result\Hit;
@@ -9,10 +9,10 @@ use Console\Model\Response\Result\Factory\Factory;
 use Console\Model\Response\Result\Miss;
 use Console\Model\Response\Result\Result;
 use Console\Model\Response\Result\Stunned;
-use Console\Executable\Round;
+use Console\Executable\Round\Fight;
 use PHPUnit\Framework\TestCase;
 
-class RoundTest extends TestCase
+class FightTest extends TestCase
 {
     /**
      * TODO
@@ -21,9 +21,9 @@ class RoundTest extends TestCase
     {
         $factory = $this->mockFactory();
 
-        $sut = new Round($factory);
+        $sut = new Fight($factory);
 
-        $this->assertInstanceOf(Round::class, $sut);
+        $this->assertInstanceOf(Fight::class, $sut);
     }
 
     /**
@@ -39,7 +39,7 @@ class RoundTest extends TestCase
 
         $defender =  $this->mockPlayer();
 
-        $sut = new Round($factory);
+        $sut = new Fight($factory);
 
         $result = $sut($attacker, $defender);
 
@@ -60,7 +60,7 @@ class RoundTest extends TestCase
         $defender->method('isLucky')->willReturn(true);
         $defender->method('canCounterAttack')->willReturn(true);
 
-        $sut = new Round($factory);
+        $sut = new Fight($factory);
 
         $result = $sut($attacker, $defender);
 
@@ -80,7 +80,7 @@ class RoundTest extends TestCase
         $defender =  $this->mockPlayer();
         $defender->method('isLucky')->willReturn(true);
 
-        $sut = new Round($factory);
+        $sut = new Fight($factory);
 
         $result = $sut($attacker, $defender);
 
@@ -100,7 +100,7 @@ class RoundTest extends TestCase
 
         $defender =  $this->mockPlayer();
 
-        $sut = new Round($factory);
+        $sut = new Fight($factory);
 
         $result = $sut($attacker, $defender);
 
@@ -119,7 +119,7 @@ class RoundTest extends TestCase
 
         $defender =  $this->mockPlayer();
 
-        $sut = new Round($factory);
+        $sut = new Fight($factory);
 
         $result = $sut($attacker, $defender);
 

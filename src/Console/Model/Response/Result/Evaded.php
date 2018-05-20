@@ -28,8 +28,19 @@ class Evaded implements Result
         $this->text = $text;
     }
 
+    /**
+     * @return Text
+     */
     public function getMessage(): Text
     {
         return $this->text;
+    }
+
+    /**
+     * @return bool
+     */
+    public function endGame(): bool
+    {
+        return false;
     }
 }

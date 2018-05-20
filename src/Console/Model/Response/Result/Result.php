@@ -9,4 +9,6 @@ use Console\Model\Value\Text;
 interface Result
 {
     public function getMessage() : Text ;
+
+    public function endGame(): bool;
 }

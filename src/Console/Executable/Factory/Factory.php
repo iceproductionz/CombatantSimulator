@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Console\Executable\Factory;
 
 use Console\Model\Response\Result\Factory\Factory as ResultFactory;
-use Console\Executable\Round;
+use Console\Executable\Round\Fight;
 
 class Factory
 {
@@ -25,10 +25,10 @@ class Factory
     }
 
     /**
-     * @return Round
+     * @return Fight
      */
-    public function make(): Round
+    public function make(): Fight
     {
-        return new Round($this->factory);
+        return new Fight($this->factory);
     }
 }

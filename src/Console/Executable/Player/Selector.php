@@ -1,6 +1,6 @@
 <?php
 
-namespace Console\Executable\PlayerSelector;
+namespace Console\Executable\Player;
 
 use Console\Factory\Player\Player;
 use Symfony\Component\Console\Helper\QuestionHelper;
@@ -9,7 +9,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Question\Question;
 
-class PlayerSelector
+/**
+ * Class Selector
+ *
+ * @package Console\Executable\Player
+ */
+class Selector
 {
     /**
      * @var InputInterface
@@ -51,7 +56,7 @@ class PlayerSelector
      */
     public function __invoke()
     {
-        $question = new Question('What is you name?', false);
+        $question = new Question("What is you name? \r\n", false);
 
         $name = $this->helper->ask($this->input, $this->output, $question);
 
@@ -60,6 +65,7 @@ class PlayerSelector
         $this->output->writeln('Please select your combatant: ' . $name);
 
         $chooseCombatant = new ChoiceQuestion('Select you combatant', Player::COMBATANTS);
+        $chooseCombatant->setErrorMessage('Combatant %s is invalid.');
 
         $combatant = $this->helper->ask($this->input, $this->output, $chooseCombatant);
 

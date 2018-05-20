@@ -47,5 +47,8 @@ class Health implements Value
         Assert::that($damage)->greaterThan(0, '$damage is not greater than zero');
 
         $this->value -= $damage;
+        if ($this->value < 0) {
+            $this->value = 0;
+        }
     }
 }

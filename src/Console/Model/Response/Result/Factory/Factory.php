@@ -69,7 +69,6 @@ class Factory
             ]
         );
 
-
         $message = new Text($text);
 
         switch ($code) {
@@ -78,10 +77,14 @@ class Factory
             case 'stunned':
                 return new Stunned($message);
             case 'miss':
-                return new Miss($message);
+                $endGame = $attacker->getFirstCombatant()->getHealth()->getValue() ===  0;
+
+                return new Miss($message, $endGame);
             case 'hitDoubled':
             case 'hit':
-                return new Hit($message);
+                $endGame = $defender->getFirstCombatant()->getHealth()->getValue() ===  0;
+
+                return new Hit($message, $endGame);
             default:
                 throw new NotImplemented('Result is not implemented');
         }

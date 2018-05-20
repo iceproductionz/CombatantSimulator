@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Console\Executable;
+namespace Console\Executable\Round;
 
 use Console\Model\Player\Player;
 use Console\Model\Response\Result\Factory\Factory as ResultFactory;
@@ -13,7 +13,7 @@ use Console\Model\Response\Result\Result;
  *
  * @package Console\Round
  */
-class Round
+class Fight
 {
     /**
      * @var ResultFactory

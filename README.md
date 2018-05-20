@@ -39,11 +39,7 @@ Read the [documentation][4] for more information.
  - Add your new commands to `bin/run.php`
  - Run the commands as:
 ```sh
-./bin/run.php demo:greet world
-./bin/run.php demo:greet world -y
-./bin/run.php demo:greet world --yell
-./bin/run.php demo:info
-```
+./bin/run.php simulate:simulate
 
 ## Creating a PHAR
 
@@ -60,10 +56,7 @@ box build
 ```
  - Run the commands:
 ```sh
-./cilex.phar demo:greet world
-./cilex.phar demo:greet world -y
-./cilex.phar demo:greet world --yell
-./cilex.phar demo:info
+./cilex.phar simulate:simulate
 ```
  - enjoy a lot.
 
