@@ -57,15 +57,13 @@ interface Combatant
     /**
      * @return bool
      */
-    public function hasAttackDoubled(): bool ;
-
-    /**
-     * @return bool
-     */
-    public function hasStunned(): bool;
+    public function hasAttackDoubled(): bool;
 
     /**
      * @return bool
      */
     public function canCounterAttack(): bool;
+
+
+    public function hasStunned(): bool;
 }

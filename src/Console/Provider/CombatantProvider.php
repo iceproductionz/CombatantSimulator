@@ -11,7 +11,7 @@ use Console\Factory\Combatant\Swordsman;
 use Console\Factory\Player\Player;
 use Console\Factory\Value;
 use Console\Model\Chance\Chance;
-use Console\Round\Factory\Factory;
+use Console\Executable\Factory\Factory;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 use StringTemplate\Engine;

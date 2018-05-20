@@ -11,6 +11,15 @@ use Console\Model\Value\Text;
 
 class Player
 {
+    const COMBATANT_BRUTE     = 'brute';
+    const COMBATANT_GRAPPLER  = 'grappler';
+    const COMBATANT_SWORDSMAN = 'swordsman';
+    const COMBATANTS = [
+        self::COMBATANT_BRUTE,
+        self::COMBATANT_GRAPPLER,
+        self::COMBATANT_SWORDSMAN,
+    ];
+
     /**
      * @var Brute
      */
@@ -50,13 +59,13 @@ class Player
     public function make(string $name, string $combatantType)
     {
         switch ($combatantType) {
-            case 'brute':
+            case self::COMBATANT_BRUTE:
                 $combatant = $this->brute->make();
                 break;
-            case 'grappler':
+            case self::COMBATANT_GRAPPLER:
                 $combatant = $this->grappler->make();
                 break;
-            case 'swordsman':
+            case self::COMBATANT_SWORDSMAN:
                 $combatant = $this->swordsman->make();
                 break;
             default:

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Console\Round\Factory;
+namespace Console\Executable\Factory;
 
 use Console\Model\Response\Result\Factory\Factory as ResultFactory;
-use Console\Round\Round;
+use Console\Executable\Round;
 
 class Factory
 {

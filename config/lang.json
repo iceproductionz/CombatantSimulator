@@ -1,8 +1,9 @@
 {
   "results": {
-    "stunned" : "{attacker.name} is stunned, missed current round",
-    "evaded"  : "The defender {defender.name} evaded attack by {attacker.name}",
-    "hit"     : "{attacker.name} delivered {defender.damage} damage to {defender.name}",
-    "miss"    : "{attacker.name} missed attack on {defender.name}"
+    "stunned"     : "{attacker.name} is stunned, missed current round",
+    "evaded"      : "The defender {defender.name} evaded attack by {attacker.name}",
+    "hit"         : "{attacker.name} delivered {defender.damage} damage to {defender.name}",
+    "hitDoubled"  : "{attacker.name} delivered  doubled damage at {defender.damage} to {defender.name}",
+    "miss"        : "{attacker.name} missed attack on {defender.name}"
   }
 }

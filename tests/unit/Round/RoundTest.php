@@ -9,7 +9,7 @@ use Console\Model\Response\Result\Factory\Factory;
 use Console\Model\Response\Result\Miss;
 use Console\Model\Response\Result\Result;
 use Console\Model\Response\Result\Stunned;
-use Console\Round\Round;
+use Console\Executable\Round;
 use PHPUnit\Framework\TestCase;
 
 class RoundTest extends TestCase

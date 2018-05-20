@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Console\Round;
+namespace Console\Executable;
 
 use Console\Model\Player\Player;
 use Console\Model\Response\Result\Factory\Factory as ResultFactory;
@@ -47,6 +47,9 @@ class Round
         }
 
         if ($attacker->hasAttackDoubled()) {
+            if ($attacker->hasStunned()) {
+                $defender->setStunned(true);
+            }
             $damage = ($attacker->getFirstCombatant()->getStrength()->getValue() * 2) - $defender->getFirstCombatant()->getDefence()->getValue();
             $defender->getFirstCombatant()->getHealth()->apply($damage);
 
@@ -60,6 +63,9 @@ class Round
             }
 
             return $this->resultFactory->make('miss', $attacker, $defender, $damage);
+        }
+        if ($attacker->hasStunned()) {
+            $defender->setStunned(true);
         }
 
         $damage = $attacker->getFirstCombatant()->getStrength()->getValue() - $defender->getFirstCombatant()->getDefence()->getValue();

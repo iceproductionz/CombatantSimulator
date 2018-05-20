@@ -146,4 +146,12 @@ class Grappler implements Combatant
     {
         return false;
     }
+
+    /**
+     * @return bool
+     */
+    public function hasStunned(): bool
+    {
+        return false;
+    }
 }

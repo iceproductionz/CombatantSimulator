@@ -13,6 +13,7 @@ use Console\Model\Response\Result\Result;
 use Console\Model\Response\Result\Stunned;
 use Console\Model\Value\Text;
 use StringTemplate\Engine;
+use Symfony\Component\Console\Helper\Table;
 
 class Factory
 {
@@ -67,6 +68,8 @@ class Factory
                 ]
             ]
         );
+
+
         $message = new Text($text);
 
         switch ($code) {
@@ -76,6 +79,7 @@ class Factory
                 return new Stunned($message);
             case 'miss':
                 return new Miss($message);
+            case 'hitDoubled':
             case 'hit':
                 return new Hit($message);
             default:

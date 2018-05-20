@@ -140,18 +140,6 @@ class Brute implements Combatant
     }
 
     /**
-     * Has stunned defender
-     *
-     * @return bool
-     */
-    public function hasStunned(): bool
-    {
-        $chance = $this->chance;
-
-        return $chance(0.02);
-    }
-
-    /**
      * Can evade
      *
      * @return bool
@@ -159,5 +147,15 @@ class Brute implements Combatant
     public function canCounterAttack(): bool
     {
         return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasStunned(): bool
+    {
+        $chance = $this->chance;
+
+        return $chance(0.02);
     }
 }

@@ -27,7 +27,8 @@
         "symfony/process"          : "^2.7 || ^3.0",
         "symfony/console"          : "^2.7 || ^3.0",
         "symfony/event-dispatcher" : "^2.7 || ^3.0",
-        "nicmart/string-template"  : "^0.1.1"
+        "nicmart/string-template"  : "^0.1.1",
+        "elkuku/console-table": "^1.0"
     },
 
     "require-dev" : {

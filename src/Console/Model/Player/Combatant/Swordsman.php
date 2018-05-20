@@ -140,16 +140,6 @@ class Swordsman implements Combatant
     }
 
     /**
-     * has Combatant Stunned Defender
-     *
-     * @return bool
-     */
-    public function hasStunned(): bool
-    {
-        return false;
-    }
-
-    /**
      * Can evade
      *
      * @return bool
@@ -157,5 +147,13 @@ class Swordsman implements Combatant
     public function canCounterAttack(): bool
     {
         return true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasStunned(): bool
+    {
+        return false;
     }
 }
